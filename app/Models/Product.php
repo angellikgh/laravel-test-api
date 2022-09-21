@@ -45,6 +45,11 @@ class Product extends Model
         return $price;
     }
 
+    public function scopeByPrice($query, $price, $operator)
+    {
+        return $query->where('price', $operator, $price);
+    }
+
     public function scopeByCategory($query, $category)
     {
         return $query->where('category', '=', $category);

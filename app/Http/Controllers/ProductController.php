@@ -11,6 +11,20 @@ class ProductController extends Controller
     {
         $products = Product::query();
 
+        if ($request->has('price')) {
+            if ($request->has('operator')) {
+                $operator = $request->input('operator');
+                $availableOperators = ['<', '>', '<=', '>='];
+
+                if (!in_array($operator, $availableOperators)) {
+
+                    $operator = $availableOperators[0];
+                }
+            }
+
+            $products->byPrice($request->input('price'), $operator);
+        }
+
         if ($request->has('category')) {
             $products->byCategory($request->input('category'));
         }
