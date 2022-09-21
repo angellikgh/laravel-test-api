@@ -1,4 +1,32 @@
-# api-requirements
+# Products REST API
+
+## How to Run
+
+Create new sqlite database file.
+
+```
+touch database/database.sqlite
+```
+
+Install the php vendors.
+
+```
+composer install
+```
+
+Generate the app key.
+
+```
+cp .env.example .env
+php artisan key:generate
+```
+
+Run the server.
+```
+php artisan serve
+```
+
+Visit the `localhost:8000`.
 
 ## Description
 We want you to implement a REST API endpoint that given a list of products, applies some
